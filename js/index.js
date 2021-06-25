@@ -1,53 +1,48 @@
 // ITERATION 1
 
 function updateSubtotal(product) {
+  // getting the elements that we want
+  const priceElement = product.querySelector('.price span');
+  const quantityElement = product.querySelector('.quantity input');
+  const subtotalElement = product.querySelector('.subtotal span');
 
-const price = product.querySelector('.price span');
-    const priceValue = price.innerText;
+  const priceValue = priceElement.innerText;
+  const quantityValue = quantityElement.value;
 
-const quantity = product.querySelector('input');
-    const quantityValue = quantity.value;
+  const subtotal = priceValue * quantityValue;
 
-const subtotal = priceValue * quantityValue;
+  subtotalElement.innerText = subtotal;
 
-const subtotalSpan = product.querySelector ('.subtotal span');
-
-subtotalSpan.innertext = subtotal;
-
-return subtotal;
-
-  /*
-  ORIGINAL FORMULA:
-  console.log('Calculating subtotal, yey!');
-
-  const price = product.querySelector('.price span');
-  const quantity = product.querySelector('input');
-
-  quantity.innerHTML = "5";
-
-  const subtotal = quantity.innerHTML * price;
-
-  const subtotalElement = product.querySelector('.subtotal span')
-
- */
-
+  return subtotal;
 }
 
 function calculateAll() {
   // code in the following two lines is added just for testing purposes.
-  // it runs when only iteration 1 is completed. at later point, it can be 
+  // it runs when only iteration 1 is completed. at later point, it can be
   //removed.
-  const singleProduct = document.querySelector('.product');
-  updateSubtotal(singleProduct);
+
+  //const singleProduct = document.querySelector('.product');
+  //updateSubtotal(singleProduct);
   // end of test
 
   // ITERATION 2
-  //... your code goes here
+  const allProductsElements = document.querySelectorAll('.product');
+  console.dir(allProductsElements);
 
-  // ITERATION 3
-  //... your code goes here
+  //original did total = 0;
+  let total = 0;
+  allProductsElements.forEach((product) => {
+    total += updateSubtotal(product);
+  });
+  console.log(total);
+
+  //const totalElement = document.querySelector('.h2 span');
+
+  const allSubtotalElements = document.querySelectorAll('.subtotal');
+  const allTotalElements = document.querySelector('#total-value span');
+
+  allTotalElements.innerText = subtotal;
 }
-
 // ITERATION 4
 
 function removeProduct(event) {
